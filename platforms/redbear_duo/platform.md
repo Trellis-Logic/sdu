@@ -34,7 +34,7 @@ where demo/BLE_Blink_Fast.bin can be downloaded [here](demo/BLE_Blink_Fast.bin)
 
 #### Upload SDU Firmware via the nRF Toolbox
 
-1. Install nRF-Toolbox for android or iphone from (https://www.nordicsemi.com/eng/Products/Nordic-mobile-Apps/nRF-Toolbox-App)
+1. Install nRF-Toolbox for android or iphone from [The AppStore or Google Play](https://www.nordicsemi.com/eng/Products/Nordic-mobile-Apps/nRF-Toolbox-App)
 2. Download the two signed firmware binaries [BLE_BlinkFast.zip](demo/BLE_BlinkFast.zip) and [BLE_BlinkSlow.zip](demo/BLE_BlinkSlow.zip), as well as the binary payload in [BLE_Blink_Fast.bin](demo/BLE_Blink_Fast.bin) to your phone.  You may want to email them to yourself.
 3. Open the nRF-Toolbox and select the "DFU" button
 4. Select the payload zip file [BLE_BlinkSlow.zip](demo/BLE_BlinkSlow.zip)
