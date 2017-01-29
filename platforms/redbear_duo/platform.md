@@ -25,12 +25,11 @@ In this section, we'll setup your Duo with the initial file it needs to be able 
  * Wait for the LED to start blinkign yellow
  * Release the SETUP button
 
-2. Using dfu-util, download the .bin file to the device, using command
+2. Using dfu-util, download the .bin file to the device, using command:  
 ```
 dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -D demo/BLE_Blink_Fast.bin
 ```
-Where demo/BLE_Blink_Fast.bin can be downloaded from [here](demo/BLE_Blink_Fast.bin)
-
+Where demo/BLE_Blink_Fast.bin can be downloaded [here](demo/BLE_Blink_Fast.bin)  
 3. Reset the duo.  You should now see the blue LED flashing about 10 times per second.
 
 #### Upload SDU Firmware via the nRF Toolbox
@@ -47,9 +46,9 @@ Where demo/BLE_Blink_Fast.bin can be downloaded from [here](demo/BLE_Blink_Fast.
 
 In this section, we'll sign your own firmware image with the [test_key](demo/test_key) used by the SDU example firmware.  This will allow your firmware image to be transferred successfully over bluetooth and programmed on the RedBear Duo.  Note that since we haven't yet integrated the SDU library with your application, you will need to perform future updates using the dfu-util or Arduino environment.  This first test just verifies your download file can be transferred and programmed successfully using the sample firmware application.
 
-1. Start by cloning the [nrfutil](https://github.com/Trellis-Logic/pc-nrfutil) library and using the instructions to install on your system.
+1. Start by cloning the [nrfutil](https://github.com/Trellis-Logic/pc-nrfutil) application and using the instructions to install on your system.
 2. Export your sketch in Arduino using Sketch->Export Compiled Binary
-3. Sign your sketch binary with the test key using
+3. Sign your sketch binary with the test key using:  
 ```
 nrfutil pkg generate --application <path_to_bin_file> --key-file demo/test_key myapplication.zip
 ```
