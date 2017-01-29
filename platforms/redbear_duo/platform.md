@@ -28,8 +28,8 @@ In this section, we'll setup your Duo with the initial file it needs to be able 
 2. Using dfu-util, download the .bin file to the device, using command:  
 ```
 dfu-util -d 2b04:d058 -a 0 -s 0x80C0000 -D demo/BLE_Blink_Fast.bin
-```
-Where demo/BLE_Blink_Fast.bin can be downloaded [here](demo/BLE_Blink_Fast.bin)  
+```  
+where demo/BLE_Blink_Fast.bin can be downloaded [here](demo/BLE_Blink_Fast.bin)  
 3. Reset the duo.  You should now see the blue LED flashing about 10 times per second.
 
 #### Upload SDU Firmware via the nRF Toolbox
