@@ -61,20 +61,21 @@ In this section we'll include the SDU library and a custom key into your Arduino
 2. Select Sketch->Include Library->Add Zip Library and add the sdu.zip file.
 Note: the SDU library build for RedBear Duo Arduino is currently in limited beta, please contact me at danwalkes@trellis-logic.com if you'd like to be a part of the initial test group.  
 3. Select Sketch->Include Library->sdu.
-4. Build a signing key specific to your application.
-* Use the [nrfutil](https://github.com/Trellis-Logic/pc-nrfutil) application and options:  
+4. Build a signing key specific to your application using the [nrfutil](https://github.com/Trellis-Logic/pc-nrfutil) application and options:  
 ```
 nrfutil keys generate myprivatekey.pem
 nrfutil keys display --key pk --format code myprivatekey.pem
 ```  
 * Save the private key myprivatekey.pem in a secure and backed up location.  Anyone with this key will be able to update your device firmware!  If you loose this key you will not be able to build new firmware for your device.
 * Copy the resulting output with declaration of crypto_key_pk value to your sketch file and complete the integration steps in the next step of the process.  
-5. Integrate the SDU library with your application.  See example integration in [this commit](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639).  Integration consists of a few simple steps:
+
+Next, integrate the SDU library with your application.  See example integration in [this commit](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639).  Integration consists of a few simple steps:  
 * Adding an advertisement for the BLE_SDU_SERVICE_UUID
 * Allocating memory for the sdu_context structure, possibly as a global varible.
 * Add an initialization call to sdu_ble_redbear_transport_init in the setup() function, after adding any other characteristics but before setting up advertising parameters.
 * Add a call to sdu_update in the loop()function, passing the sdu_context structure.
 * Add a call to the sdu_gatt_write_callback in your gatWriteCallback handler.  
-6. Build your project.  If you see an error message "dynalib location not correct" please use the instructions [on the RedBear forums](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639) to patch your linker command file.
-7. Update your project over USB the first time, since your signing key has changed.
-8. Sign firmware packages with your new key and upload them as described in the preceding sections.
+
+Finally, build and test your project.  If you see an error message "dynalib location not correct" please use the instructions [on the RedBear forums](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639) to patch your linker command file.
+* Update your project over USB the first time, since your signing key has changed from the test key.
+* Sign firmware packages with your new key and upload them as described in the preceding sections.
