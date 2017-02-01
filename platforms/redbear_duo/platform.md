@@ -73,7 +73,7 @@ nrfutil keys display --key pk --format code myprivatekey.pem
 3. Copy the resulting output with declaration of crypto_key_pk value to your sketch file and use with the integration steps in the next step of the process.  
 
 ##### Integrate the SDU Library With Your Application
-See example integration in [this commit](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639).  Integration consists of a few simple steps:  
+See example integration in [this commit](https://github.com/Trellis-Logic/STM32-Arduino/commit/99097785a01446489b8b681e810621610a9af758).  Integration consists of a few simple steps:  
 1. Adding an advertisement for the BLE_SDU_SERVICE_UUID.  
 2. Allocating memory for the sdu_context structure, for instance as a global varible.  
 3. Add an initialization call to sdu_ble_redbear_transport_init in the setup() function, after adding any other characteristics but before setting up advertising parameters.  Pass in a pointer to the private key structure you've created in the previous step.  
