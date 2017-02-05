@@ -22,7 +22,7 @@ In this section, we'll setup your Duo with the initial file it needs to be able 
 1. Put your duo in DFU mode
  * Hold down buth buttons
  * Release only the RESET button, while holding down the SETUP button.
- * Wait for the LED to start blinkign yellow
+ * Wait for the LED to start blinking yellow
  * Release the SETUP button
 
 2. Using dfu-util, download the .bin file to the device, using command:  
@@ -38,7 +38,7 @@ where demo/BLE_Blink_Fast.bin can be downloaded [here](demo/BLE_Blink_Fast.bin)
 2. Download the two signed firmware binaries [BLE_BlinkFast.zip](demo/BLE_BlinkFast.zip) and [BLE_BlinkSlow.zip](demo/BLE_BlinkSlow.zip), as well as the binary payload in [BLE_Blink_Fast.bin](demo/BLE_Blink_Fast.bin) to your phone.  You may want to email them to yourself.
 3. Open the nRF-Toolbox and select the "DFU" button
 4. Select the payload zip file [BLE_BlinkSlow.zip](demo/BLE_BlinkSlow.zip)
-5. Select the Duo.  It should be listed as "RBL-DUO".
+5. Select the Duo.  It should be listed as "RBL-DUO", may also be displayed as "BLE Peripheral" on the iPhone application.
 6. Click upload.  The payload should transfer to the device successfully.  After a few seconds, the LED should start to blink more slowly (approximately once per second) indicating a new firmware payload is now in use.
 7. If desired, repeat the steps to switch between the [BLE_BlinkFast.zip](demo/BLE_BlinkFast.zip) and [BLE_BlinkSlow.zip](demo/BLE_BlinkSlow.zip) payloads to confirm device update over Bluetooth is working as expected.
 
@@ -79,10 +79,16 @@ See example integration in [this commit](https://github.com/Trellis-Logic/STM32-
 3. Add an initialization call to sdu_ble_redbear_transport_init in the setup() function, after adding any other characteristics but before setting up advertising parameters.  Pass in a pointer to the private key structure you've created in the previous step.  
 4. Add a call to sdu_update in the loop()function, passing the sdu_context structure.  
 5. Add a call to the sdu_gatt_write_callback in your gatWriteCallback handler.  
-6. Build and test your project.  If you see an error message "dynalib location not correct" please use the instructions [on the RedBear forums](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639) to patch your linker command file.  
+6. Build and test your project.  If you see an error message "dynalib location not correct" please use the notes in the troubleshooting section below to resolve.  
 7. Update your project over USB the first time, since your signing key has changed from the test key.  
 8. Sign firmware binary files with your new key using:  
 ```
 nrfutil pkg generate --application <path_to_bin_file> --key-file myprivatekey.pem myapplication.zip
 ```  
-and upload to the device using nRF Toolbox or the iPhone/Android Libraries.
+and upload to the device using nRF Toolbox or the iPhone/Android Libraries with your own mobile application.
+
+### Troubleshooting
+1. Failures during download with the Android application  
+  * The Android DFU library does not correctly retry CRC failures before [this pull request](https://github.com/NordicSemiconductor/Android-DFU-Library/pull/41).  Rebuild with the latest source for the DFU library to resolve.
+2. Message "dynalib location not correct" when attempting to build your project with the sdu library.  
+  * See instructions [on the RedBear forums](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639) to patch your linker command file.  
