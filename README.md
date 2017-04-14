@@ -2,7 +2,7 @@ Secure Device Update (SDU) Library
 ==========
 The Secure Device Update (SDU) library is a software library to assist with device firmware or software updates.  The goal of this project is to make updating your device firmware in a secure way a minimal burden on device software or firmware developers.
 
-The platform is available with full source code for all necessary firmware and support utilities, avoiding any vendor lock-in concerns.
+The platform is available with full source code for all necessary firmware and support utilities, avoiding any vendor lock-in concerns.  Support utilities are licensed BSD and the firmware portion will be available soon in a source release with GPLv2 or commercial licensing options.  Please contact me at danwalkes@trellis-logic.com for early access.
 
 For more about the background and motivation for this project, see the [release announcement](https://www.linkedin.com/pulse/announcing-secure-device-update-sdu-library-ota-through-dan-walkes).
 
