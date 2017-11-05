@@ -92,5 +92,5 @@ and upload to the device using nRF Toolbox or the iPhone/Android Libraries with 
   * The Android DFU library does not correctly retry CRC failures before [this pull request](https://github.com/NordicSemiconductor/Android-DFU-Library/pull/41).  Rebuild with the latest source for the DFU library to resolve.
 2. Message "dynalib location not correct" when attempting to build your project with the sdu library.  
   * See instructions [on the RedBear forums](http://discuss.redbear.cc/t/dynalib-location-not-correct-linker-error-on-arduino-build/1639) to patch your linker command file.  
-3. Red blinking hardware fault LED pattern after building the project with RedBear SDK version 0.3.1 or 0.3.2
- * See [this issue](https://github.com/redbear/STM32-Arduino/issues/21) and [this fix](https://github.com/Trellis-Logic/STM32-Arduino/commit/78d96cfcea16f28fd67bb8d5520bad11679a8ab6) to the C:\Users\Username\AppData\Local\Arduino15\packages\RedBear\hardware\STM32F2\0.3.1\platform.txt file.
+3. Red blinking hardware fault LED pattern after building the project with RedBear SDK version 0.3.0 or 0.3.1
+ * See [this issue](https://github.com/redbear/STM32-Arduino/issues/21) and [this fix](https://github.com/Trellis-Logic/STM32-Arduino/commit/78d96cfcea16f28fd67bb8d5520bad11679a8ab6) to the C:\Users\Username\AppData\Local\Arduino15\packages\RedBear\hardware\STM32F2\0.3.X\platform.txt file.
